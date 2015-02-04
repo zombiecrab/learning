@@ -17,6 +17,27 @@
 					);
 				}
 			});
+
+			var CommentList = React.createClass({
+				render: function() {
+					return(
+						<div className="commentList">
+							Comment list.
+						</div>
+					);
+				}
+			});
+
+			var CommentForm = React.createClass({
+				render: function() {
+					return(
+						<div className="commentForm">
+							Comment form.
+						</div>
+					);
+				}
+			});
+
 			React.render(
 				<CommentBox />,
 				document.getElementById('content')
