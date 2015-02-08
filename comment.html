@@ -11,11 +11,6 @@
 		<script type="text/jsx">
 			var converter = new Showdown.converter();
 
-			var data = [
-							{author: "Alex Wood", text: "This is one comment"},
-							{author: "John Smith", text: "This is *another* comment"}
-					   ];
-
 			var CommentBox = React.createClass({
 				loadCommentsFromServer: function() {
 					$.ajax({
