@@ -12,8 +12,8 @@
 			var converter = new Showdown.converter();
 
 			var CommentBox = React.createClass({
-				getInitalState: function() {
-					return {data: [{"author": "Pete Hunt", "text": "This is one comment"}]};
+				getInitialState: function() {
+					return {data: []};
 				},
 				loadCommentsFromServer: function() {
 					$.ajax({
