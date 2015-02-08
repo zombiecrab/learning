@@ -13,7 +13,7 @@
 
 			var CommentBox = React.createClass({
 				getInitalState: function() {
-					return {data: []};
+					return {data: [{"author": "Pete Hunt", "text": "This is one comment"}]};
 				},
 				loadCommentsFromServer: function() {
 					$.ajax({
