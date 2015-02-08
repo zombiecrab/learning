@@ -12,6 +12,9 @@
 			var converter = new Showdown.converter();
 
 			var CommentBox = React.createClass({
+				getInitalState: function() {
+					return {data: []};
+				},
 				loadCommentsFromServer: function() {
 					$.ajax({
 						url: this.props.url,
@@ -23,9 +26,6 @@
 							console.error(this.props.url, status, err.toString());
 						}.bind(this)
 					});
-				},
-				getInitalState: function() {
-					return {data: []};
 				},
 				componentDidMount: function() {
 					this.loadCommentsFromServer();
