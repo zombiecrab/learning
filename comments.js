@@ -20,12 +20,26 @@ var converter = new Showdown.converter();
 					this.loadCommentsFromServer();
 					setInterval(this.loadCommentsFromServer, this.props.pollInterval);
 				},
+				handleCommentSubmit: function(comment) {
+					$ajax({
+						url: this.props.url,
+						dataType: 'json',
+						type: 'POST',
+						data: comment,
+						sucsess: function(data) {
+							this.setState({data: data});
+						}.bind(this),
+						error: function(xhr, status, err) {
+							console.error(this.props.url, status, err.toString());
+						}.bind(this)
+					});
+				},
 				render: function() {
 					return(
 						<div className="commentBox">
 							<h1>Comments</h1>
 							<CommentList data={this.state.data} />
-							<CommentForm />
+							<CommentForm onCommentSubmit={this.handleCommentSubmit} />
 						</div>
 					);
 				}
@@ -58,6 +72,7 @@ var converter = new Showdown.converter();
 						return;
 					}
 
+					this.props.onCommentSubmit({author: author, text: text});
 					this.refs.author.getDOMNode().value = '';
 					this.refs.text.getDOMNode().value = '';
 
